@@ -1,0 +1,42 @@
+2026-09-26T10:00:01.120Z INFO  [orders] OrderService started on :9091
+2026-09-26T10:00:02.441Z INFO  [orders] Ready to accept traffic
+2026-09-26T10:01:11.002Z INFO  [orders] GET /health 200 3ms
+2026-09-26T06:34:37.974261500Z ERROR [orders] TimeoutException: checkout exceeded 3000ms budget
+2026-09-26T06:34:37.974261500Z ERROR [orders] LATENCY_SPIKE p99=4200ms route=/checkout
+2026-09-26T06:34:37.974261500Z FATAL [orders] Cascading failure: payment client pool exhausted
+2026-09-26T06:45:03.370892700Z ERROR [orders] TimeoutException: checkout exceeded 3000ms budget
+2026-09-26T06:45:03.370892700Z ERROR [orders] LATENCY_SPIKE p99=4200ms route=/checkout
+2026-09-26T06:45:03.370892700Z FATAL [orders] Cascading failure: payment client pool exhausted
+2026-09-26T06:46:39.036329300Z ERROR [orders] TimeoutException: checkout exceeded 3000ms budget
+2026-09-26T06:46:39.036329300Z ERROR [orders] LATENCY_SPIKE p99=4200ms route=/checkout
+2026-09-26T06:46:39.036329300Z FATAL [orders] Cascading failure: payment client pool exhausted
+2026-09-26T06:51:33.201409500Z ERROR [orders] TimeoutException: checkout exceeded 3000ms budget
+2026-09-26T06:51:33.201409500Z ERROR [orders] LATENCY_SPIKE p99=4200ms route=/checkout
+2026-09-26T06:51:33.201409500Z FATAL [orders] Cascading failure: payment client pool exhausted
+2026-09-26T06:51:55.391301100Z ERROR [orders] TimeoutException: checkout exceeded 3000ms budget
+2026-09-26T06:51:55.391301100Z ERROR [orders] LATENCY_SPIKE p99=4200ms route=/checkout
+2026-09-26T06:51:55.391301100Z FATAL [orders] Cascading failure: payment client pool exhausted
+2026-09-26T06:52:23.718607800Z ERROR [orders] TimeoutException: checkout exceeded 3000ms budget
+2026-09-26T06:52:23.718607800Z ERROR [orders] LATENCY_SPIKE p99=4200ms route=/checkout
+2026-09-26T06:52:23.718607800Z FATAL [orders] Cascading failure: payment client pool exhausted
+2026-09-26T07:11:46.251577700Z ERROR [orders] TimeoutException: checkout exceeded 3000ms budget
+2026-09-26T07:11:46.251577700Z ERROR [orders] LATENCY_SPIKE p99=4200ms route=/checkout
+2026-09-26T07:11:46.251577700Z FATAL [orders] Cascading failure: payment client pool exhausted
+2026-09-26T07:12:37.279844100Z ERROR [orders] TimeoutException: checkout exceeded 3000ms budget
+2026-09-26T07:12:37.279844100Z ERROR [orders] LATENCY_SPIKE p99=4200ms route=/checkout
+2026-09-26T07:12:37.279844100Z FATAL [orders] Cascading failure: payment client pool exhausted
+2026-09-26T07:14:12.937024400Z ERROR [orders] TimeoutException: checkout exceeded 3000ms budget
+2026-09-26T07:14:12.937024400Z ERROR [orders] LATENCY_SPIKE p99=4200ms route=/checkout
+2026-09-26T07:14:12.937024400Z FATAL [orders] Cascading failure: payment client pool exhausted
+2026-09-26T07:19:11.852779100Z ERROR [orders] TimeoutException: checkout exceeded 3000ms budget
+2026-09-26T07:19:11.852779100Z ERROR [orders] LATENCY_SPIKE p99=4200ms route=/checkout
+2026-09-26T07:19:11.852779100Z FATAL [orders] Cascading failure: payment client pool exhausted
+2026-09-26T07:48:10.560150300Z ERROR [orders] TimeoutException: checkout exceeded 3000ms budget
+2026-09-26T07:48:10.560150300Z ERROR [orders] LATENCY_SPIKE p99=4200ms route=/checkout
+2026-09-26T07:48:10.560150300Z FATAL [orders] Cascading failure: payment client pool exhausted
+2026-09-26T08:04:52.418163900Z ERROR [orders] TimeoutException: checkout exceeded 3000ms budget
+2026-09-26T08:04:52.418163900Z ERROR [orders] LATENCY_SPIKE p99=4200ms route=/checkout
+2026-09-26T08:04:52.418163900Z FATAL [orders] Cascading failure: payment client pool exhausted
+2026-09-26T09:06:19.206194500Z ERROR [orders] TimeoutException: checkout exceeded 3000ms budget
+2026-09-26T09:06:19.206194500Z ERROR [orders] LATENCY_SPIKE p99=4200ms route=/checkout
+2026-09-26T09:06:19.206194500Z FATAL [orders] Cascading failure: payment client pool exhausted

@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+pulsemind:
+  watch-path: ${PULSEMIND_WATCH_PATH:../sample-service}
+  log-path: ${PULSEMIND_LOG_PATH:../sample-service/logs/application.log}
+  loop-interval-ms: ${PULSEMIND_LOOP_MS:2500}
+  gemini-api-key: ${GEMINI_API_KEY:${GOOGLE_API_KEY:}}
+  flash-model: gemini-3.8-flash
+  antigravity-agent: antigravity-preview-09-2026
+  tts-model: gemini-3.8-flash-tts
+  transcribe-model: gemini-3.5-transcribe
+  demo-mode-fallback: true
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 25MB
+
+logging:
+  level:
+    com.pulsemind: INFO

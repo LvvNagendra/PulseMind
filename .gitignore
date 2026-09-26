@@ -1,0 +1,15 @@
+.idea/
+.tools/
+.env
+backend/.env
+frontend/.env
+frontend/.env.local
+**/target/
+**/node_modules/
+**/dist/
+*.iml
+.DS_Store
+frontend/src/assets/
+*.log
+!sample-service/logs/application.log
+e2e-results.json

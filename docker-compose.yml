@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      PULSEMIND_WATCH_PATH: /workspace/sample-service
+      PULSEMIND_LOG_PATH: /workspace/sample-service/logs/application.log
+      PULSEMIND_LOOP_MS: 2500
+    volumes:
+      - ./sample-service:/workspace/sample-service
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE: ""
+        VITE_WS_URL: ""
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

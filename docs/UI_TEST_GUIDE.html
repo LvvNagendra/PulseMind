@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PulseMind — UI Test Guide for Testers</title>
+  <style>
+    :root {
+      --bg: #071018;
+      --panel: #0e1c26;
+      --ink: #e7f0f4;
+      --muted: #8aa0ad;
+      --accent: #2fd3a2;
+      --warn: #f0b429;
+      --danger: #ff6b5a;
+      --line: rgba(231, 240, 244, 0.14);
+      --font: "Segoe UI", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 70% 40% at 10% 0%, rgba(47, 211, 162, 0.14), transparent 55%),
+        linear-gradient(180deg, #09141d, var(--bg));
+      line-height: 1.55;
+    }
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+    h1 {
+      margin: 0 0 0.4rem;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      letter-spacing: -0.03em;
+    }
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 40rem;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.25rem 1.35rem;
+      margin: 1.25rem 0;
+    }
+    h2 {
+      margin: 2rem 0 0.75rem;
+      font-size: 1.25rem;
+      border-left: 3px solid var(--accent);
+      padding-left: 0.7rem;
+    }
+    h3 { margin: 1.1rem 0 0.45rem; font-size: 1.05rem; }
+    ol.steps {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+    ol.steps > li {
+      margin: 0.85rem 0;
+      padding-left: 0.25rem;
+    }
+    .expect {
+      display: block;
+      margin-top: 0.4rem;
+      padding: 0.55rem 0.7rem;
+      background: rgba(47, 211, 162, 0.08);
+      border-left: 3px solid var(--accent);
+      color: #c9e6dc;
+      font-size: 0.92rem;
+    }
+    .fail {
+      border-left-color: var(--danger);
+      background: rgba(255, 107, 90, 0.08);
+      color: #f3c7c1;
+    }
+    .note {
+      border-left-color: var(--warn);
+      background: rgba(240, 180, 41, 0.08);
+      color: #f0e0b5;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 0.55rem 0.65rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: rgba(255,255,255,0.04); }
+    code, .url {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.88em;
+      color: var(--accent);
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .badge.p0 { background: rgba(255,107,90,0.2); color: #ffb0a6; }
+    .badge.p1 { background: rgba(240,180,41,0.2); color: #f5d889; }
+    .badge.p2 { background: rgba(47,211,162,0.2); color: #9be8cd; }
+    .checklist label {
+      display: flex;
+      gap: 0.55rem;
+      align-items: flex-start;
+      margin: 0.45rem 0;
+      cursor: pointer;
+    }
+    .checklist input { margin-top: 0.25rem; }
+    footer {
+      margin-top: 2.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    @media print {
+      body { background: #fff; color: #111; }
+      .card, .expect { background: #f7f7f7; color: #222; }
+      .eyebrow, code, .url { color: #0a7; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">QA / Tester Guide</p>
+    <h1>PulseMind — UI Testing Steps</h1>
+    <p class="lead">
+      Follow these steps to test the PulseMind continuous AI workspace from the browser UI.
+      No coding required. Total time: about <strong>10–15 minutes</strong>.
+    </p>
+
+    <div class="card">
+      <h3>Before you start</h3>
+      <ol class="steps">
+        <li>
+          Ask the developer to start the app (backend + frontend).
+          <span class="expect note">Open this URL in Chrome/Edge: <span class="url">http://localhost:5173</span></span>
+        </li>
+        <li>
+          Confirm the page title shows <strong>PulseMind</strong> and you see buttons:
+          <em>Run 90s demo sequence</em>, <em>Inject code fault</em>, <em>Spike logs</em>, <em>Deep verify</em>.
+        </li>
+        <li>
+          Look at the glowing orb in the center.
+          <span class="expect">Expected: status text <strong>LIVE</strong> (not RECONNECTING for more than ~10 seconds).</span>
+          <span class="expect fail">Fail if: stuck on RECONNECTING for more than 30 seconds, or blank/white error page.</span>
+        </li>
+      </ol>
+    </div>
+
+    <h2>Test 1 — First load &amp; live connection <span class="badge p0">P0</span></h2>
+    <div class="card">
+      <ol class="steps">
+        <li>Open <span class="url">http://localhost:5173</span> and wait 5 seconds.</li>
+        <li>Check the orb label under the circle.</li>
+        <li>Check metrics row: <strong>Cycles</strong>, <strong>Findings</strong>, <strong>API</strong>.</li>
+        <li>Check right panel: models should show <code>gemini-3.8-flash</code> and <code>antigravity-preview-09-2026</code>.</li>
+      </ol>
+      <p class="expect">Pass: orb = LIVE, Cycles increases over time (or stays &gt; 0), API shows “Gemini live” (or demo fallback if no key).</p>
+      <p class="expect fail">Fail: page crash, endless RECONNECTING, metrics never update.</p>
+    </div>
+
+    <h2>Test 2 — Run 90s demo sequence <span class="badge p0">P0</span></h2>
+    <div class="card">
+      <ol class="steps">
+        <li>Click the green button <strong>Run 90s demo sequence</strong>.</li>
+        <li>Buttons may show “Running…” and disable briefly — that is normal.</li>
+        <li>Watch the <strong>Sentinel timeline</strong> on the left for 60–90 seconds.</li>
+        <li>Scroll the timeline and identify these phases (labels on cards):
+          <strong>OBSERVE</strong>, <strong>REASON</strong>, <strong>VERIFY</strong>, <strong>ACT</strong>.
+        </li>
+      </ol>
+      <p class="expect">Pass: timeline fills with new cards; at least one REASON finding about OrderService / null / division-by-zero or log anomaly; Findings count increases.</p>
+      <p class="expect fail">Fail: nothing new appears after 90 seconds, or only SYSTEM/heartbeat forever.</p>
+    </div>
+
+    <h2>Test 3 — Inject code fault <span class="badge p0">P0</span></h2>
+    <div class="card">
+      <ol class="steps">
+        <li>Click <strong>Inject code fault</strong>.</li>
+        <li>Wait 10–20 seconds.</li>
+        <li>Look for a timeline card with phase <strong>REASON</strong> and severity <strong>HIGH</strong> or <strong>CRITICAL</strong>.</li>
+        <li>Read the title/detail — it should mention a code bug (null check, division by zero, etc.).</li>
+      </ol>
+      <p class="expect">Pass: REASON card appears with actionable fix suggestion; often followed by ACT and maybe TTS alert.</p>
+    </div>
+
+    <h2>Test 4 — Spike logs <span class="badge p0">P0</span></h2>
+    <div class="card">
+      <ol class="steps">
+        <li>Click <strong>Spike logs</strong>.</li>
+        <li>Wait 10–25 seconds.</li>
+        <li>Look for <strong>OBSERVE</strong> of type LOG_ANOMALY and a following <strong>REASON</strong> card.</li>
+      </ol>
+      <p class="expect">Pass: log anomaly / timeout / payment pool / latency-related finding appears.</p>
+    </div>
+
+    <h2>Test 5 — Deep verify (Antigravity) <span class="badge p0">P0</span></h2>
+    <div class="card">
+      <ol class="steps">
+        <li>Click <strong>Deep verify</strong>.</li>
+        <li>Wait up to 30–45 seconds (this call can be slower).</li>
+        <li>Find a timeline card with phase <strong>VERIFY</strong>.</li>
+        <li>Check the model line on the card footer — should mention <code>antigravity</code>.</li>
+      </ol>
+      <p class="expect">Pass: VERIFY card appears with longer remediation / verification text.</p>
+      <p class="expect note">Note: if Google API is busy, a demo-fallback verify may appear — still acceptable, but mark as “fallback mode”.</p>
+    </div>
+
+    <h2>Test 6 — Voice / text command <span class="badge p1">P1</span></h2>
+    <div class="card">
+      <ol class="steps">
+        <li>In the right panel <strong>Voice bridge</strong>, type in the text box:
+          <code>run a deep verify</code>
+        </li>
+        <li>Click <strong>Send</strong> (or press Enter).</li>
+        <li>Look for a <strong>VOICE</strong> timeline card with the transcript and intent.</li>
+      </ol>
+      <p class="expect">Pass: VOICE card shows intent <code>deep_verify</code>, and a VERIFY/ACT follows.</p>
+
+      <h3>Optional mic test</h3>
+      <ol class="steps">
+        <li>Click <strong>Hold mic command</strong>, allow microphone permission, speak clearly:
+          “spike the logs” or “inject a bug”, then click again to stop &amp; send.</li>
+      </ol>
+      <p class="expect note">Skip if no mic / permission blocked. Use text box instead.</p>
+    </div>
+
+    <h2>Test 7 — UI layout &amp; mobile <span class="badge p2">P2</span></h2>
+    <div class="card">
+      <ol class="steps">
+        <li>Resize browser to phone width (~375px) or use DevTools device mode.</li>
+        <li>Confirm buttons wrap, orb is visible, timeline still scrollable.</li>
+        <li>Return to desktop width — layout should return to two columns.</li>
+      </ol>
+      <p class="expect">Pass: usable on mobile; no overlapping text; can still click demo.</p>
+    </div>
+
+    <h2>What “good” looks like (cheat sheet)</h2>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>UI area</th>
+            <th>Healthy</th>
+            <th>Problem</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Orb</td>
+            <td>LIVE + phase OBSERVE/REASON/VERIFY/ACT/IDLE</td>
+            <td>RECONNECTING forever</td>
+          </tr>
+          <tr>
+            <td>Timeline</td>
+            <td>New cards after each button click</td>
+            <td>Empty / frozen</td>
+          </tr>
+          <tr>
+            <td>Findings metric</td>
+            <td>Increases after inject/demo</td>
+            <td>Always 0 after actions</td>
+          </tr>
+          <tr>
+            <td>REASON cards</td>
+            <td>Mentions real bug/log issue + model name</td>
+            <td>No REASON after 30s</td>
+          </tr>
+          <tr>
+            <td>VERIFY cards</td>
+            <td>Longer Antigravity-style plan</td>
+            <td>Button does nothing</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Tester sign-off checklist</h2>
+    <div class="card checklist">
+      <label><input type="checkbox" /> App opens at localhost:5173</label>
+      <label><input type="checkbox" /> Orb shows LIVE</label>
+      <label><input type="checkbox" /> Demo sequence produces ORVA timeline cards</label>
+      <label><input type="checkbox" /> Inject code fault → HIGH/CRITICAL REASON</label>
+      <label><input type="checkbox" /> Spike logs → anomaly REASON</label>
+      <label><input type="checkbox" /> Deep verify → VERIFY card</label>
+      <label><input type="checkbox" /> Text voice command works</label>
+      <label><input type="checkbox" /> No blocking UI errors / blank screen</label>
+      <p style="margin-top:1rem;color:var(--muted);font-size:0.9rem;">
+        Tester name: ____________ &nbsp;&nbsp; Date: ____________ &nbsp;&nbsp; Result: Pass / Fail
+      </p>
+    </div>
+
+    <h2>Quick start for developer (if app is not running)</h2>
+    <div class="card">
+      <p>Backend:</p>
+      <p><code>scripts\run-backend.bat</code> or jar on port <strong>8080</strong></p>
+      <p>Frontend:</p>
+      <p><code>cd frontend &amp;&amp; npm run dev</code> → port <strong>5173</strong></p>
+      <p class="expect note">Tester only needs the UI URL. Backend must already be running.</p>
+    </div>
+
+    <footer>
+      PulseMind UI Test Guide · Problem Statement: Frontier Intelligence at Flash Speed ·
+      Open this file in any browser: <span class="url">docs/UI_TEST_GUIDE.html</span>
+    </footer>
+  </div>
+</body>
+</html>
