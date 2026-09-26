@@ -5,10 +5,8 @@ const API = import.meta.env.VITE_API_BASE ?? ''
 
 function wsUrl() {
   if (import.meta.env.VITE_WS_URL) return import.meta.env.VITE_WS_URL as string
+  // Same-origin so Vite/nginx proxy /ws works for local + public tunnels
   const proto = location.protocol === 'https:' ? 'wss' : 'ws'
-  if (import.meta.env.DEV) {
-    return `${proto}://${location.hostname}:8080/ws/pulse`
-  }
   return `${proto}://${location.host}/ws/pulse`
 }
 

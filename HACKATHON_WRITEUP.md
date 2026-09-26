@@ -15,12 +15,24 @@ PulseMind is a continuous background AI workspace for **engineers, SREs, tech le
 - Judges — one-click demo of Flash + Antigravity
 - QA — repeatable inject scenarios from the UI
 
-## How to check (judges / testers)
+## Demo
 
-1. Open the UI (no login)
-2. Confirm orb = LIVE
-3. Click **Run 90s demo sequence**
-4. Confirm timeline ORVA cards appear
+**Live demo (global):** https://wild-garlics-live.loca.lt
+
+First browser visit may ask for a tunnel password — enter this IP once: `49.200.108.74`
+
+Then:
+1. Confirm orb / status shows LIVE
+2. Click **Run 90s demo sequence** or **Scan watched project**
+3. Watch OBSERVE → REASON → VERIFY → ACT in the timeline
+
+**GitHub:** https://github.com/LvvNagendra/PulseMind
+
+1. Start with Docker Compose or local scripts (see README)
+2. Open the UI (no login)
+3. Confirm orb = LIVE
+4. Click **Run 90s demo sequence**
+5. Confirm timeline ORVA cards appear
 
 See also: `PRODUCT.md` and `docs/UI_TEST_GUIDE.html`
 
